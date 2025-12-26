@@ -1,0 +1,883 @@
+@import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background: #7170e5;
+  overflow: hidden;
+  perspective: 1000px;
+  font-family: "Averia Serif Libre", serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.fundo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(205, 249, 255, 0.3882352941);
+  z-index: -100;
+}
+.fundo .morro {
+  width: 90%;
+  height: 38vmin;
+  background: #94cac7;
+  box-shadow: inset 0px 10px 15px 1px rgba(91, 121, 185, 0.6196078431);
+  position: absolute;
+  bottom: 0;
+}
+.fundo .morro--0 {
+  left: -20vmin;
+  border-radius: 0% 100% 0% 0%;
+}
+.fundo .morro--1 {
+  background: #80b7b4;
+  right: -15px;
+  width: 60%;
+  height: 28vmin;
+  border-radius: 100% 50% 0% 0%;
+  z-index: -20;
+}
+
+.area-text {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 15px;
+}
+.area-text h1 {
+  text-align: center;
+  width: 65%;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #ce0a0a;
+  text-shadow: 0px 4px 5px #ff9f9f;
+  margin-left: 25px;
+}
+
+.arvore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  left: 4vmin;
+  bottom: 23vmin;
+  transform-origin: bottom center;
+  z-index: 50;
+}
+.arvore .area__estrela {
+  position: relative;
+  width: 16vmin;
+  aspect-ratio: 1;
+  display: inline-block;
+  bottom: -12vmin;
+  z-index: 25;
+}
+.arvore .area__estrela .estrela {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background: radial-gradient(ellipse at 35% 30%, rgba(153, 125, 67, 0.9), rgba(154, 114, 53, 0.7607843137) 45%), radial-gradient(ellipse at 65% 60%, rgba(137, 106, 27, 0.86), #897034 55%);
+  filter: drop-shadow(2px 11px 17px yellow);
+  mix-blend-mode: screen;
+  z-index: 15;
+}
+.arvore .area__estrela .estrela__dentro {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 5%, 55% 44%, 93% 37%, 56% 50%, 75% 85%, 51% 55%, 25% 85%, 46% 50%, 7% 37%, 47% 44%);
+  background: radial-gradient(ellipse at 35% 30%, rgba(45, 36, 18, 0.93), rgba(53, 40, 18, 0.7607843137) 45%), radial-gradient(ellipse at 65% 60%, rgba(55, 41, 5, 0.86), rgba(48, 35, 4, 0.9411764706) 55%);
+  mix-blend-mode: screen;
+}
+.arvore .area__estrela .ativa__estrela {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background: radial-gradient(ellipse at 35% 30%, rgba(255, 186, 39, 0.9), rgba(231, 166, 44, 0.7607843137) 45%), radial-gradient(ellipse at 65% 60%, rgba(220, 162, 13, 0.86), #e9a700 55%);
+  filter: drop-shadow(2px 12px 10px yellow);
+  mix-blend-mode: screen;
+}
+.arvore .area__estrela .ativa__estrela__dentro {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 5%, 55% 44%, 93% 37%, 56% 50%, 75% 85%, 51% 55%, 25% 85%, 46% 50%, 7% 37%, 47% 44%);
+  background: radial-gradient(ellipse at 35% 30%, rgba(120, 84, 8, 0.93), rgba(120, 81, 11, 0.7607843137) 45%), radial-gradient(ellipse at 65% 60%, rgba(88, 66, 11, 0.89), rgba(88, 65, 10, 0.9019607843) 55%);
+  mix-blend-mode: screen;
+}
+.arvore .area__estrela .estrela__shadow {
+  display: none;
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(127, 109, 62, 0.8196078431);
+  box-shadow: 0px 0px 50px 30px #eac347, inset 0px 0px 22px 3px #eac347;
+  filter: drop-shadow(0 0 25px #eac347);
+  mix-blend-mode: screen;
+  z-index: -20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.arvore .area__estrela .estrela__shadow.visible {
+  display: block;
+  animation: pulseStar 2s infinite alternate;
+}
+.arvore .area__folhagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50vmin;
+  height: 60vmin;
+  position: relative;
+  filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5));
+  z-index: 15;
+}
+.arvore .area__folhagem .folhagem {
+  width: 100%;
+  height: 28vmin;
+  background: linear-gradient(135deg, #1d9d46 0%, #0d5e2e 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  position: absolute;
+}
+.arvore .area__folhagem .folhagem--0 {
+  top: 5vmin;
+  width: 55%;
+  height: 20vmin;
+  background: linear-gradient(135deg, #2ecc71 0%, #178044 100%);
+  z-index: 10;
+}
+.arvore .area__folhagem .folhagem--1 {
+  width: 80%;
+  height: 26vmin;
+  top: 17vmin;
+  z-index: 5;
+}
+.arvore .area__folhagem .folhagem--2 {
+  bottom: 0vmin;
+  z-index: 2;
+}
+.arvore .area__folhagem .folhagem .fio {
+  position: absolute;
+  border-bottom: 4px solid #000;
+  border-radius: 50%;
+}
+.arvore .area__folhagem .folhagem .fio--0 {
+  width: 15vmin;
+  height: 5vmin;
+  right: 9vmin;
+  top: 4vmin;
+  transform: rotate(-10deg);
+}
+.arvore .area__folhagem .folhagem .fio--1 {
+  width: 26vmin;
+  height: 11vmin;
+  right: -3vmin;
+  top: 7vmin;
+  transform: rotate(30deg);
+}
+.arvore .area__folhagem .folhagem .fio--2 {
+  width: 26vmin;
+  height: 14vmin;
+  right: 10vmin;
+  top: 0vmin;
+  transform: rotate(-15deg);
+}
+.arvore .area__folhagem .folhagem .fio--3 {
+  width: 36vmin;
+  height: 11vmin;
+  left: 7vmin;
+  bottom: 2vmin;
+  transform: rotate(20deg);
+}
+.arvore .area__folhagem .folhagem .fio--4 {
+  width: 40vmin;
+  height: 14vmin;
+  right: 6vmin;
+  top: 2vmin;
+  transform: rotate(-13deg);
+}
+.arvore .area__folhagem .folhagem .fio--5 {
+  width: 40vmin;
+  height: 10vmin;
+  left: 8vmin;
+  bottom: 3vmin;
+  transform: rotate(13deg);
+}
+.arvore .area__folhagem .folhagem .luz {
+  position: absolute;
+  width: 1.5vmin;
+  height: 3vmin;
+  border-radius: 50%;
+  transition: box-shadow 0.4s ease-out;
+}
+.arvore .area__folhagem .folhagem .luz::before {
+  content: "";
+  position: absolute;
+  left: -1.5px;
+  bottom: -1px;
+  border-radius: 3px;
+  border: 0.1px solid rgba(54, 82, 63, 0.768627451);
+  width: 2vmin;
+  height: 1vmin;
+  background-image: repeating-linear-gradient(135deg, #38593c, #20452c 25% 10%, #284f31 25%);
+  z-index: 10;
+}
+.arvore .area__folhagem .folhagem .luz--0, .arvore .area__folhagem .folhagem .luz--6, .arvore .area__folhagem .folhagem .luz--12, .arvore .area__folhagem .folhagem .luz--18 {
+  background: #224074;
+}
+.arvore .area__folhagem .folhagem .luz--1, .arvore .area__folhagem .folhagem .luz--7, .arvore .area__folhagem .folhagem .luz--13, .arvore .area__folhagem .folhagem .luz--19 {
+  background: #8d610e;
+}
+.arvore .area__folhagem .folhagem .luz--2, .arvore .area__folhagem .folhagem .luz--8, .arvore .area__folhagem .folhagem .luz--14, .arvore .area__folhagem .folhagem .luz--20 {
+  background: #5c1952;
+}
+.arvore .area__folhagem .folhagem .luz--3, .arvore .area__folhagem .folhagem .luz--9, .arvore .area__folhagem .folhagem .luz--15, .arvore .area__folhagem .folhagem .luz--21 {
+  background: #8a8309;
+}
+.arvore .area__folhagem .folhagem .luz--4, .arvore .area__folhagem .folhagem .luz--10, .arvore .area__folhagem .folhagem .luz--16 {
+  background: #184817;
+}
+.arvore .area__folhagem .folhagem .luz--5, .arvore .area__folhagem .folhagem .luz--11, .arvore .area__folhagem .folhagem .luz--17 {
+  background: #6d2828;
+}
+.arvore .area__folhagem .folhagem .luz--0 {
+  right: 10vmin;
+  top: 7vmin;
+  transform: rotate(155deg);
+}
+.arvore .area__folhagem .folhagem .luz--1 {
+  right: 15vmin;
+  top: 8.5vmin;
+  transform: rotate(170deg);
+}
+.arvore .area__folhagem .folhagem .luz--2 {
+  left: 7vmin;
+  top: 12vmin;
+  transform: rotate(-135deg);
+}
+.arvore .area__folhagem .folhagem .luz--3 {
+  left: 11vmin;
+  top: 15.5vmin;
+  transform: rotate(-150deg);
+}
+.arvore .area__folhagem .folhagem .luz--4 {
+  right: 10vmin;
+  bottom: -1vmin;
+  transform: rotate(196deg);
+}
+.arvore .area__folhagem .folhagem .luz--5 {
+  right: 14vmin;
+  top: 11vmin;
+  transform: rotate(148deg);
+}
+.arvore .area__folhagem .folhagem .luz--6 {
+  right: 20vmin;
+  top: 13.3vmin;
+  transform: rotate(165deg);
+}
+.arvore .area__folhagem .folhagem .luz--7 {
+  right: 26.5vmin;
+  top: 14.3vmin;
+  transform: rotate(177deg);
+}
+.arvore .area__folhagem .folhagem .luz--8 {
+  left: 10vmin;
+  bottom: 5.5vmin;
+  transform: rotate(211deg);
+}
+.arvore .area__folhagem .folhagem .luz--9 {
+  left: 15vmin;
+  bottom: 3vmin;
+  transform: rotate(206deg);
+}
+.arvore .area__folhagem .folhagem .luz--10 {
+  left: 20vmin;
+  bottom: 0.5vmin;
+  transform: rotate(202deg);
+}
+.arvore .area__folhagem .folhagem .luz--11 {
+  right: 13vmin;
+  bottom: -1.5vmin;
+  transform: rotate(192deg);
+}
+.arvore .area__folhagem .folhagem .luz--12 {
+  right: 15vmin;
+  top: 13vmin;
+  transform: rotate(155deg);
+}
+.arvore .area__folhagem .folhagem .luz--13 {
+  right: 21vmin;
+  top: 15vmin;
+  transform: rotate(165deg);
+}
+.arvore .area__folhagem .folhagem .luz--14 {
+  right: 28vmin;
+  top: 16.3vmin;
+  transform: rotate(171deg);
+}
+.arvore .area__folhagem .folhagem .luz--15 {
+  right: 35vmin;
+  top: 17vmin;
+  transform: rotate(180deg);
+}
+.arvore .area__folhagem .folhagem .luz--16 {
+  left: 11vmin;
+  bottom: 5.5vmin;
+  transform: rotate(206deg);
+}
+.arvore .area__folhagem .folhagem .luz--17 {
+  left: 17vmin;
+  bottom: 3vmin;
+  transform: rotate(196deg);
+}
+.arvore .area__folhagem .folhagem .luz--18 {
+  left: 23.8vmin;
+  bottom: 1vmin;
+  transform: rotate(192deg);
+}
+.arvore .area__folhagem .folhagem .luz--19 {
+  right: 19vmin;
+  bottom: -0.5vmin;
+  transform: rotate(187deg);
+}
+.arvore .area__folhagem .folhagem .luz--20 {
+  right: 12vmin;
+  bottom: -1.3vmin;
+  transform: rotate(182deg);
+}
+.arvore .area__folhagem .folhagem .luz--21 {
+  right: 6vmin;
+  bottom: -1.3vmin;
+  transform: rotate(172deg);
+}
+.arvore .area__folhagem .folhagem .ativa__luz--0, .arvore .area__folhagem .folhagem .ativa__luz--6, .arvore .area__folhagem .folhagem .ativa__luz--12, .arvore .area__folhagem .folhagem .ativa__luz--18 {
+  background: #0f55ff;
+  box-shadow: 0px -7px 15px 10px #0f55ff;
+}
+.arvore .area__folhagem .folhagem .ativa__luz--1, .arvore .area__folhagem .folhagem .ativa__luz--7, .arvore .area__folhagem .folhagem .ativa__luz--13, .arvore .area__folhagem .folhagem .ativa__luz--19 {
+  background: #ff9e07;
+  box-shadow: 0px -8px 20px 16px #ff9e07;
+}
+.arvore .area__folhagem .folhagem .ativa__luz--2, .arvore .area__folhagem .folhagem .ativa__luz--8, .arvore .area__folhagem .folhagem .ativa__luz--14, .arvore .area__folhagem .folhagem .ativa__luz--20 {
+  background: #ab00ff;
+  box-shadow: 0px -7px 15px 10px #ab00ff;
+}
+.arvore .area__folhagem .folhagem .ativa__luz--3, .arvore .area__folhagem .folhagem .ativa__luz--9, .arvore .area__folhagem .folhagem .ativa__luz--15, .arvore .area__folhagem .folhagem .ativa__luz--21 {
+  background: #e9dd07;
+  box-shadow: 0px -8px 20px 16px #e9dd07;
+}
+.arvore .area__folhagem .folhagem .ativa__luz--4, .arvore .area__folhagem .folhagem .ativa__luz--10, .arvore .area__folhagem .folhagem .ativa__luz--16 {
+  background: #30ec09;
+  box-shadow: 0px -8px 17px 14px #30ec09;
+}
+.arvore .area__folhagem .folhagem .ativa__luz--5, .arvore .area__folhagem .folhagem .ativa__luz--11, .arvore .area__folhagem .folhagem .ativa__luz--17 {
+  background: #ef0d0d;
+  box-shadow: 0px -7px 16px 11px #ef0d0d;
+}
+.arvore .tronco {
+  width: 6.5vmin;
+  height: 12vmin;
+  border-radius: 0 0 6px 6px;
+  background: repeating-linear-gradient(90deg, #6b3e26 0, #5a331f 10%, #6b3e26 20%), radial-gradient(circle at top, #8a5638, #4a2b1a);
+  box-shadow: inset 0 2px 5px 0px rgba(0, 0, 0, 0.4), inset 0 -4px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: -20;
+}
+.arvore .area__presentes {
+  position: relative;
+}
+.arvore .area__presentes .presente {
+  position: absolute;
+}
+.arvore .area__presentes .presente--0 {
+  width: 15vmin;
+  height: 15vmin;
+  background: repeating-linear-gradient(90deg, #c41e3a 0px, #c41e3a 3vmin, #8b1428 3vmin, #8b1428 6vmin), linear-gradient(135deg, #c41e3a, #8b1428);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.2), inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+  left: 35px;
+  top: -35px;
+}
+.arvore .area__presentes .presente--0::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5vmin;
+  height: 100%;
+  background: #ffd700;
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.4), inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+.arvore .area__presentes .presente--0::after {
+  content: "";
+  position: absolute;
+  top: 0vmin;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vmin;
+  height: 2.5vmin;
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+.arvore .area__presentes .presente--0 .laco {
+  position: absolute;
+  width: 4vmin;
+  height: 5vmin;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50% 50% 0 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.6);
+}
+.arvore .area__presentes .presente--0 .laco--esq {
+  top: -16px;
+  left: 10px;
+  transform: rotate(-45deg);
+}
+.arvore .area__presentes .presente--0 .laco--dir {
+  top: -16px;
+  right: 10px;
+  transform: rotate(45deg) scaleX(-1);
+}
+.arvore .area__presentes .presente--1 {
+  width: 20vmin;
+  height: 15vmin;
+  background: repeating-linear-gradient(45deg, #2e7d32 0px, #2e7d32 2vmin, #1b5e20 2vmin, #1b5e20 4vmin, #388e3c 4vmin, #388e3c 6vmin);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.15), inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+  right: 25px;
+  top: -42px;
+}
+.arvore .area__presentes .presente--1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5vmin;
+  height: 100%;
+  background: #ffd700;
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.4), inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+.arvore .area__presentes .presente--1::after {
+  content: "";
+  position: absolute;
+  top: 0vmin;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vmin;
+  height: 2.5vmin;
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+.arvore .area__presentes .presente--1 .laco {
+  position: absolute;
+  width: 4vmin;
+  height: 5vmin;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50% 50% 0 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.6);
+}
+.arvore .area__presentes .presente--1 .laco--esq {
+  top: -16px;
+  left: 25px;
+  transform: rotate(-45deg);
+}
+.arvore .area__presentes .presente--1 .laco--dir {
+  top: -16px;
+  right: 25px;
+  transform: rotate(45deg) scaleX(-1);
+}
+.arvore .area__presentes .presente .linke, .arvore .area__presentes .presente .github {
+  position: absolute;
+  cursor: pointer;
+  width: 9vmin;
+  height: 8vmin;
+  right: 25px;
+  top: 21px;
+  background: transparent;
+}
+
+.elfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 20vmin;
+  right: 15vmin;
+  z-index: 50;
+  transform-origin: bottom center;
+  transform: scale(0.8);
+}
+.elfo__gorro {
+  position: relative;
+  height: 2vmin;
+  left: -9.5vmin;
+  bottom: 0vmin;
+  z-index: 20;
+}
+.elfo__gorro__vermelho {
+  position: absolute;
+  bottom: -3.8vmin;
+  left: 2vmin;
+  width: 22vmin;
+  height: 10vmin;
+  background: linear-gradient(to right, #d2232a, #b71c23);
+  border-radius: 65% 5% 90% 20%;
+}
+.elfo__gorro__faixa {
+  position: absolute;
+  bottom: -4vmin;
+  left: 1.5vmin;
+  width: 16vmin;
+  height: 3.5vmin;
+  background: #fff;
+  border-radius: 20px;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+.elfo__gorro__pompom {
+  position: absolute;
+  width: 4.5vmin;
+  height: 4.5vmin;
+  right: -27vmin;
+  top: -7vmin;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+.elfo__cabeca {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+.elfo__cabeca__orelha {
+  width: 5vmin;
+  height: 10vmin;
+  background: linear-gradient(to bottom, #f5bbc6, #fa9b9f);
+  box-shadow: inset 0px 0px 20px 0px rgba(221, 121, 136, 0.8117647059);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+.elfo__cabeca__orelha--esq {
+  left: -3.5vmin;
+  border-radius: 10% 100% 0% 70%;
+  transform: translateY(-50%) rotate(-15deg);
+}
+.elfo__cabeca__orelha--dir {
+  right: -3.5vmin;
+  border-radius: 100% 10% 70% 0%;
+  transform: translateY(-50%) rotate(15deg);
+}
+.elfo__cabeca__rosto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 15.5vmin;
+  height: 15.5vmin;
+  background: #f6a6a6;
+  box-shadow: inset 0px 2px 10px 0px rgba(206, 129, 129, 0.9294117647);
+  position: relative;
+  border-top: 6px solid rgba(116, 90, 8, 0.8588235294);
+  border-radius: 40%;
+}
+.elfo__cabeca__rosto .olhos__nariz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  top: -10px;
+}
+.elfo__cabeca__rosto .olhos__nariz .area__olho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 5vmin;
+  height: 10vmin;
+  position: relative;
+}
+.elfo__cabeca__rosto .olhos__nariz .area__olho .sombrancelha {
+  width: 3vmin;
+  height: 3vmin;
+  border-top: 4px solid rgba(116, 90, 8, 0.8588235294);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+}
+.elfo__cabeca__rosto .olhos__nariz .area__olho .olho {
+  background: #08160d;
+  width: 2.3vmin;
+  height: 3.8vmin;
+  margin-top: 22px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: close-eyes 4.5s ease-in-out infinite;
+}
+.elfo__cabeca__rosto .olhos__nariz .area__olho .olho .brilho {
+  position: absolute;
+  background: #e0d4d4;
+  top: 0.8vmin;
+  left: 0.5vmin;
+  width: 0.5vmin;
+  height: 1.5vmin;
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 0.1s ease;
+  animation: hide-brilho 4.5s ease-in-out infinite;
+}
+.elfo__cabeca__rosto .olhos__nariz .area__olho .bochecha {
+  width: 2.5vmin;
+  height: 1vmin;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.15);
+  margin-bottom: 5px;
+  filter: blur(2px);
+}
+.elfo__cabeca__rosto .olhos__nariz .nariz {
+  width: 2.5vmin;
+  height: 2.5vmin;
+  border-radius: 50%;
+  border-top: 3.5px solid #e16563;
+  position: relative;
+  bottom: -3vmin;
+}
+.elfo__cabeca__rosto .boca {
+  width: 7.5vmin;
+  height: 5vmin;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 0px solid transparent;
+  border-bottom: 4px solid #d44c4c;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 13px;
+}
+.elfo__corpo {
+  position: relative;
+  height: 22vmin;
+  z-index: 15;
+}
+.elfo__corpo__topo__casaco {
+  width: 15vmin;
+  height: 2.5vmin;
+  background: #fff;
+  border: 3px dashed #d2232a;
+  border-radius: 35% 35% 0% 0%;
+  position: absolute;
+  left: -7.5vmin;
+  top: -2vmin;
+  z-index: 15;
+}
+.elfo__corpo__casaco {
+  width: 11.5vmin;
+  height: 18vmin;
+  background: linear-gradient(to right, #d2232a, #b71c23);
+  border: 3.5px dotted #fff;
+  border-radius: 35%;
+  position: absolute;
+  top: -0.5vmin;
+}
+.elfo__corpo__casaco--0 {
+  z-index: 5;
+  right: -2.8vmin;
+}
+.elfo__corpo__casaco--1 {
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-left: 2vmin;
+  left: -2.8vmin;
+  z-index: 10;
+}
+.elfo__corpo__casaco--1 .botao {
+  width: 2vmin;
+  height: 2vmin;
+  background: white;
+  border-radius: 50%;
+}
+
+.area-botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  right: 22.8vmin;
+  bottom: 23vmin;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  position: absolute;
+}
+.area-botao .btn {
+  width: 14vmin;
+  height: 9vmin;
+  border: none;
+  background: green;
+  border-radius: 30px 30px 0px 0px;
+  box-shadow: inset 1px 2px 3px 0px rgba(228, 242, 255, 0.7215686275), inset 0px 0px 6px 2px rgba(190, 38, 46, 0.9176470588);
+  cursor: pointer;
+  position: absolute;
+  bottom: 1.7vmin;
+  transition: 0.5s ease-in-out all;
+}
+.area-botao .btn .braco {
+  position: absolute;
+  width: 4.5vmin;
+  height: 8vmin;
+  background: linear-gradient(to right, #d2232a, #b71c23);
+  border: 3.5px dotted #fff;
+  border-radius: 45%;
+}
+.area-botao .btn .braco .mao {
+  width: 4.5vmin;
+  height: 3.5vmin;
+  background: black;
+  border-radius: 20% 30% 50% 50%;
+  position: absolute;
+}
+.area-botao .btn .braco .mao--esq {
+  left: -1px;
+  bottom: -9px;
+  transform: rotate(-4deg);
+  border-radius: 30% 20% 50% 50%;
+}
+.area-botao .btn .braco .mao--dir {
+  right: 1px;
+  bottom: -9px;
+  transform: rotate(4deg);
+}
+.area-botao .btn .braco--0 {
+  top: -4vmin;
+  left: 0vmin;
+  transform: rotate(-34deg);
+}
+.area-botao .btn .braco--1 {
+  top: -4vmin;
+  right: 0vmin;
+  transform: rotate(34deg);
+}
+.area-botao .btn:active {
+  height: 6vmin;
+  box-shadow: inset 1.5px 1.5px 3px -0.5px rgba(228, 242, 255, 0.7215686275), inset 0px 2px 6px 2px darkgreen;
+}
+.area-botao .btn:active .braco {
+  height: 8.5vmin;
+}
+.area-botao .btn:active .braco--0 {
+  bottom: -7vmin;
+  transform: rotate(-20deg);
+}
+.area-botao .btn:active .braco--1 {
+  bottom: -7vmin;
+  transform: rotate(20deg);
+}
+.area-botao .btn:active .braco .mao {
+  height: 2.7vmin;
+}
+.area-botao .barra {
+  position: absolute;
+  z-index: 15;
+  bottom: 0;
+  background: gray;
+  width: 20vmin;
+  height: 3.8vmin;
+  border-radius: 45px 45px 15px 15px;
+  box-shadow: inset 1px 2px 3px -1px rgba(228, 242, 255, 0.7215686275), inset 0px 0px 4px 2px gray, 0px 5px 5px 0px #000;
+}
+.area-botao .barra p {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.floco-neve {
+  position: absolute;
+  top: -5vh;
+  background: linear-gradient(to bottom, #fff, #e3f4f9);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 2px white);
+  animation: cair linear infinite;
+}
+
+@keyframes cair {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+@keyframes close-eyes {
+  0%, 92%, 100% {
+    transform: scaleY(1);
+  }
+  94%, 96% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes hide-brilho {
+  0%, 92%, 100% {
+    opacity: 1;
+  }
+  93%, 97% {
+    opacity: 0;
+  }
+}
+@keyframes pulseStar {
+  from {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}/*# sourceMappingURL=styles.css.map */
